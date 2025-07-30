@@ -56,7 +56,7 @@
         class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-100"
       >
         <!--suppress HtmlDeprecatedAttribute -->
-				<svg
+        <svg
           class="h-8 w-8 text-blue-600"
           fill="none"
           viewBox="0 0 24 24"
@@ -95,7 +95,7 @@
               class="flex w-full items-center justify-center gap-3 rounded-lg bg-blue-600 px-4 py-3 font-semibold text-white transition duration-200 hover:bg-blue-700"
             >
               <!--suppress HtmlDeprecatedAttribute -->
-							<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   fill-rule="evenodd"
                   d="M8 10V7a4 4 0 1 1 8 0v3h1a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h1Zm2-3a2 2 0 1 1 4 0v3h-4V7Zm2 6a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"
@@ -113,7 +113,7 @@
           class="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
         >
           <!--suppress HtmlDeprecatedAttribute -->
-					<svg
+          <svg
             class="mr-2 h-4 w-4"
             fill="none"
             viewBox="0 0 24 24"
