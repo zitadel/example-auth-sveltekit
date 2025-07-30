@@ -39,5 +39,8 @@
     "@auth/core": "^0.40.0",
     "@auth/sveltekit": "^1.10.0",
     "openid-client": "^6.6.2"
+  },
+  "overrides": {
+    "cookie": "^0.7.0"
   }
 }
