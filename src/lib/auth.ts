@@ -196,7 +196,7 @@ declare module '@auth/core/jwt' {
  * - **jwt**: Manages token storage and refresh logic
  * - **session**: Shapes what data is available to your app
  */
-export const { handle, signIn, signOut } = SvelteKitAuth({
+export const { handle } = SvelteKitAuth({
   providers: [
     Zitadel({
       issuer: ZITADEL_DOMAIN,
