@@ -19,12 +19,6 @@ export const load: PageServerLoad = async (event) => {
   const logoutStateCookie = event.cookies.get('logout_state');
 
   if (state && logoutStateCookie && state === logoutStateCookie) {
-    event.cookies.delete('logout_state', {
-      path: '/',
-    });
-    event.cookies.delete('authjs.session-token', {
-      path: '/',
-    });
     event.setHeaders({
       'Clear-Site-Data': '"cookies"',
     });
