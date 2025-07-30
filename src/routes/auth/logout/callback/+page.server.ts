@@ -25,6 +25,9 @@ export const load: PageServerLoad = async (event) => {
     event.cookies.delete('authjs.session-token', {
       path: '/',
     });
+    event.setHeaders({
+      'Clear-Site-Data': '"cookies"',
+    });
 
     const successUrl = new URL('/auth/logout/success', event.url);
     throw redirect(302, successUrl.toString());
