@@ -240,11 +240,11 @@ export const { handle } = SvelteKitAuth({
    * We've customized key pages to provide a consistent user experience that
    * matches our application's design system and branding.
    *
-   * ### Sign-in Page (`/auth/signin`)
+   * ### Sign-in Page (`/auth/login`)
    * - **Purpose**: Provides a branded sign-in experience for ZITADEL authentication
    * - **Features**: Error message display, CSRF protection, callback URL handling
    * - **Design**: Matches application's design system with consistent styling
-   * - **Preview**: Visit `/auth/signin` or `/auth/signin?error=AccessDenied`
+   * - **Preview**: Visit `/auth/login` or `/auth/login?error=AccessDenied`
    *
    * ### Error Page (`/auth/error`)
    * - **Purpose**: Displays authentication errors with user-friendly messages
@@ -258,10 +258,10 @@ export const { handle } = SvelteKitAuth({
    *
    * ```
    * # Sign-in page with different error states
-   * http://<hostname>/auth/signin
-   * http://<hostname>/auth/signin?error=AccessDenied
-   * http://<hostname>/auth/signin?error=Configuration
-   * http://<hostname>/auth/signin?error=OAuthAccountNotLinked
+   * http://<hostname>/auth/login
+   * http://<hostname>/auth/login?error=AccessDenied
+   * http://<hostname>/auth/login?error=Configuration
+   * http://<hostname>/auth/login?error=OAuthAccountNotLinked
    *
    * # Error page with different error types
    * http://<hostname>/auth/error?error=Configuration
@@ -276,7 +276,7 @@ export const { handle } = SvelteKitAuth({
    *
    * ```typescript
    * // pages: {
-   * //   signIn: '/auth/signin',
+   * //   signIn: '/auth/login',
    * //   error: '/auth/error',
    * // },
    * ```
@@ -287,7 +287,7 @@ export const { handle } = SvelteKitAuth({
    * ## Available Page Options
    *
    * You can customize any of these Auth.js pages:
-   * - `signIn`: Custom sign-in page (default: `/auth/signin`)
+   * - `signIn`: Custom sign-in page (default: `/auth/login`)
    * - `signOut`: Custom sign-out confirmation page
    * - `error`: Custom error page (default: `/auth/error`)
    * - `verifyRequest`: Email verification page (for magic links)
@@ -297,7 +297,7 @@ export const { handle } = SvelteKitAuth({
    * (sign-in and error) since we use external OAuth authentication.
    */
   pages: {
-    signIn: '/auth/signin',
+    signIn: '/auth/login',
     error: '/auth/error',
   },
 
