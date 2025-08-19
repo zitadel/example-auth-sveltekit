@@ -1,5 +1,5 @@
 import { error, redirect } from '@sveltejs/kit';
-import { buildLogoutUrl } from '$lib/auth';
+import { buildLogoutUrl } from '$lib/auth/auth';
 import type { Actions } from './$types';
 import { dev } from '$app/environment';
 

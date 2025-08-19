@@ -1,4 +1,4 @@
-import { handle as authHandle } from '$lib/auth';
+import { handle as authHandle } from '$lib/auth/auth';
 import { sequence } from '@sveltejs/kit/hooks';
 
 export const handle = sequence(authHandle, async ({ event, resolve }) => {
