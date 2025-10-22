@@ -33,7 +33,8 @@
     "tailwindcss": "^4.0.0",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.20.0",
-    "vite": "^7.0.4"
+    "vite": "^7.0.4",
+    "knip": "^5.64.1"
   },
   "dependencies": {
     "@auth/core": "^0.40.0",
