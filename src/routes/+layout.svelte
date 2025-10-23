@@ -1,8 +1,6 @@
 <script lang="ts">
   import '../app.css';
   import ErrorBoundary from '$lib/components/ErrorBoundary.svelte';
-
-  export let data;
 </script>
 
 <svelte:head>
