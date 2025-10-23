@@ -1,22 +1,15 @@
-// @ts-ignore
-
 import { SvelteKitAuth } from '@auth/sveltekit';
 import Zitadel from '@auth/sveltekit/providers/zitadel';
 import { randomUUID } from 'crypto';
 import * as oidc from 'openid-client';
 import type { JWT } from '@auth/core/jwt';
 import { ZITADEL_SCOPES } from './scopes';
-// @ts-nocheck
 import {
   SESSION_DURATION,
   SESSION_SECRET,
-  // @ts-nocheck
   ZITADEL_CLIENT_ID,
-  // @ts-nocheck
   ZITADEL_CLIENT_SECRET,
-  // @ts-nocheck
   ZITADEL_DOMAIN,
-  // @ts-nocheck
   ZITADEL_POST_LOGOUT_URL,
 } from '$env/static/private';
 
