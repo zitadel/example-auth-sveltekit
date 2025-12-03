@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { dev } from '$app/environment';
 
 /**
  * Handles the callback from an external Identity Provider (IdP) after a user
@@ -19,10 +20,15 @@ export const load: PageServerLoad = async (event) => {
   const logoutStateCookie = event.cookies.get('logout_state');
 
   if (state && logoutStateCookie && state === logoutStateCookie) {
-    event.setHeaders({
-      'Clear-Site-Data': '"cookies"',
-    });
+    const cookieName = dev ? 'authjs.session-token' : '__Secure-authjs.session-token';
+    
+    const cookieOptions = {
+      path: '/',
+      secure: !dev
+    };
 
+    event.cookies.delete(cookieName, cookieOptions);
+    
     const successUrl = new URL('/auth/logout/success', event.url);
     throw redirect(302, successUrl.toString());
   } else {
