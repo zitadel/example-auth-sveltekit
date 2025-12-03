@@ -11,6 +11,7 @@ import {
   ZITADEL_CLIENT_SECRET,
   ZITADEL_DOMAIN,
   ZITADEL_POST_LOGOUT_URL,
+  ZITADEL_POST_LOGIN_URL
 } from '$env/static/private';
 
 /**
@@ -314,7 +315,10 @@ export const { handle } = SvelteKitAuth({
      * @returns The URL to redirect the user to after successful login
      */
     async redirect({ baseUrl }) {
-      return `${baseUrl}/profile`;
+      if (!ZITADEL_POST_LOGIN_URL) {
+        return `${baseUrl}/profile`;
+      } 
+      return `${baseUrl}${ZITADEL_POST_LOGIN_URL}`;
     },
 
     /**
