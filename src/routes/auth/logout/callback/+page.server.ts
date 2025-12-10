@@ -23,6 +23,13 @@ export const load: PageServerLoad = async (event) => {
       'Clear-Site-Data': '"cookies"',
     });
 
+    for (const [name] of Object.entries(event.cookies.getAll())) {
+      if (name.includes('authjs.')) {
+        event.cookies.delete(name, { path: '/' });
+      }
+    }
+    event.cookies.delete('logout_state', { path: '/auth/logout/callback' });
+
     const successUrl = new URL('/auth/logout/success', event.url);
     throw redirect(302, successUrl.toString());
   } else {
