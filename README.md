@@ -99,7 +99,9 @@ cd example-auth-sveltekit
 npm install
 
 # 3. Start the development server
-npm run dev
+npm start
+# or
+make start
 ```
 
 The application will now be running at `http://localhost:3000`.
