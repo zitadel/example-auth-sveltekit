@@ -24,6 +24,8 @@ export default ts.config(
       // typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
       // see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
       'no-undef': 'off',
+      // Disabled: rule was added in eslint-plugin-svelte 3.x and requires code changes
+      'svelte/no-navigation-without-resolve': 'off',
     },
   },
   {

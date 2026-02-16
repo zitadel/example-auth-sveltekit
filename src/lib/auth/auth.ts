@@ -147,6 +147,7 @@ declare module '@auth/core/types' {
  * Auth.js uses for session management.
  */
 declare module '@auth/core/jwt' {
+  // noinspection JSUnusedGlobalSymbols
   interface JWT {
     /** The OpenID Connect ID token from ZITADEL */
     idToken?: string;
