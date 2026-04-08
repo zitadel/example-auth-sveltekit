@@ -1,7 +1,15 @@
 import { handle as authHandle } from '$lib/auth/auth';
 import { sequence } from '@sveltejs/kit/hooks';
+import type { Handle } from '@sveltejs/kit';
 
-export const handle = sequence(authHandle, async ({ event, resolve }) => {
+const conditionalAuth: Handle = ({ event, resolve }) => {
+  if (event.url.pathname === '/auth/logout/callback') {
+    return resolve(event);
+  }
+  return authHandle({ event, resolve });
+};
+
+export const handle = sequence(conditionalAuth, async ({ event, resolve }) => {
   const response = await resolve(event);
 
   response.headers.set('X-Frame-Options', 'DENY');

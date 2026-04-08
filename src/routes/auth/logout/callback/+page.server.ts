@@ -1,6 +1,7 @@
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
+// noinspection JSUnusedGlobalSymbols
 /**
  * Handles the callback from an external Identity Provider (IdP) after a user
  * signs out. This endpoint is responsible for validating the logout request to
@@ -19,18 +20,14 @@ export const load: PageServerLoad = async (event) => {
   const logoutStateCookie = event.cookies.get('logout_state');
 
   if (state && logoutStateCookie && state === logoutStateCookie) {
-    event.setHeaders({
-      'Clear-Site-Data': '"cookies"',
-    });
-
-    for (const [name] of Object.entries(event.cookies.getAll())) {
+    const successUrl = new URL('/auth/logout/success', event.url);
+    event.setHeaders({ 'Clear-Site-Data': '"cookies"' });
+    for (const name of event.cookies.getAll().map((c) => c.name)) {
       if (name.includes('authjs.')) {
         event.cookies.delete(name, { path: '/' });
       }
     }
     event.cookies.delete('logout_state', { path: '/auth/logout/callback' });
-
-    const successUrl = new URL('/auth/logout/success', event.url);
     throw redirect(302, successUrl.toString());
   } else {
     const errorUrl = new URL('/auth/logout/error', event.url);
