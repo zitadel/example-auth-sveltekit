@@ -14,6 +14,7 @@ declare module '$env/static/private' {
   export const ZITADEL_CLIENT_ID: string;
   export const ZITADEL_CLIENT_SECRET: string;
   export const ZITADEL_DOMAIN: string;
+  export const ZITADEL_POST_LOGIN_URL: string;
   export const ZITADEL_POST_LOGOUT_URL: string;
 }
 
