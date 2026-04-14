@@ -1,5 +1,6 @@
 {
   "name": "example-sveltekit-auth",
+  "license": "Apache-2.0",
   "private": true,
   "engines": {
     "node": ">=22.0.0"
