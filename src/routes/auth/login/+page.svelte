@@ -34,7 +34,7 @@
     class="grid flex-1 place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8"
   >
     <div class="text-center">
-      <p class="text-gray-600">Loading...</p>
+      <p class="text-gray-600">Loading…</p>
     </div>
   </main>
 {:else}

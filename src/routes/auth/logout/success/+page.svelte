@@ -39,7 +39,7 @@
       Logout successful
     </h1>
     <p class="mt-6 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-      Redirecting in 10 seconds...
+      Redirecting in 10 seconds…
     </p>
     <div class="mt-10 flex items-center justify-center gap-x-6">
       <a
