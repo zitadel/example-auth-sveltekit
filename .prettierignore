@@ -1,9 +1,31 @@
-# Package Managers
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
-bun.lock
-bun.lockb
+# Dependency directories
+node_modules
 
-# Miscellaneous
-/static/
+# Build output
+/dist
+/build
+/out
+
+# Version control directories
+.git
+
+# Logs
+*.log
+
+# Other common directories to ignore
+/public
+/assets
+
+# Minified files
+*.min.*
+
+# Source maps
+*.map
+
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
