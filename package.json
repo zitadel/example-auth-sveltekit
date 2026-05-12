@@ -8,16 +8,18 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "vite dev",
-    "dev": "vite dev",
     "build": "vite build",
-    "prepack": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "dev": "vite dev",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prepack": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "prepare": "svelte-kit sync || echo ''",
+    "preview": "vite preview",
+    "start": "vite dev",
     "test": "playwright test"
   },
   "devDependencies": {
