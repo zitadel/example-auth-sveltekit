@@ -95,9 +95,9 @@ Follow these steps to get the application running:
 
 ```bash
 # 1. Clone the repository
-git clone git@github.com:zitadel/example-auth-sveltekit.git
+git clone git@github.com:zitadel/example-sveltekit-auth.git
 
-cd example-auth-sveltekit
+cd example-sveltekit-auth
 
 # 2. Install the project dependencies
 npm install
