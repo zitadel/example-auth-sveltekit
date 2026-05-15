@@ -16,6 +16,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "depcheck": "npx knip",
     "prepack": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "prepare": "svelte-kit sync || echo ''",
     "preview": "vite preview",
