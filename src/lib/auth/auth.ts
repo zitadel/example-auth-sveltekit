@@ -1,5 +1,5 @@
-import { SvelteKitAuth } from '@auth/sveltekit';
-import Zitadel from '@auth/sveltekit/providers/zitadel';
+import { SvelteKitAuth } from '@zitadel/sveltekit-auth';
+import Zitadel from '@auth/core/providers/zitadel';
 import { randomUUID } from 'crypto';
 import * as oidc from 'openid-client';
 import type { JWT } from '@auth/core/jwt';

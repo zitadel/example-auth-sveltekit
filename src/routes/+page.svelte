@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { signIn } from '@auth/sveltekit/client';
+  import { signIn } from '@zitadel/sveltekit-auth/client';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
 </script>
