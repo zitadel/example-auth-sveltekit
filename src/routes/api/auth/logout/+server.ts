@@ -1,6 +1,6 @@
 import { error, redirect } from '@sveltejs/kit';
 import { buildLogoutUrl } from '$lib/auth/auth';
-import type { Actions } from './$types';
+import type { RequestHandler } from './$types';
 import { dev } from '$app/environment';
 
 /**
@@ -18,23 +18,22 @@ import { dev } from '$app/environment';
  * response if no valid session exists. The response includes a secure state cookie
  * that will be validated in the logout callback.
  */
-export const actions: Actions = {
-  default: async (event) => {
-    const session = await event.locals.auth();
+// noinspection JSUnusedGlobalSymbols
+export const POST: RequestHandler = async (event) => {
+  const session = await event.locals.auth();
 
-    if (!session?.idToken) {
-      throw error(400, 'No valid session or ID token found');
-    } else {
-      const { url, state } = await buildLogoutUrl(session.idToken);
+  if (!session?.idToken) {
+    throw error(400, 'No valid session or ID token found');
+  }
 
-      event.cookies.set('logout_state', state, {
-        httpOnly: true,
-        secure: !dev,
-        sameSite: 'lax',
-        path: '/auth/logout/callback',
-      });
+  const { url, state } = await buildLogoutUrl(session.idToken);
 
-      throw redirect(302, url);
-    }
-  },
+  event.cookies.set('logout_state', state, {
+    httpOnly: true,
+    secure: !dev,
+    sameSite: 'lax',
+    path: '/api/auth/logout/callback',
+  });
+
+  throw redirect(302, url);
 };

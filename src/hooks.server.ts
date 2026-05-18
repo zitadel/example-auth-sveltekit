@@ -3,12 +3,13 @@ import { sequence } from '@sveltejs/kit/hooks';
 import type { Handle } from '@sveltejs/kit';
 
 const conditionalAuth: Handle = ({ event, resolve }) => {
-  if (event.url.pathname === '/auth/logout/callback') {
+  if (event.url.pathname === '/api/auth/logout/callback') {
     return resolve(event);
   }
   return authHandle({ event, resolve });
 };
 
+// noinspection JSUnusedGlobalSymbols
 export const handle = sequence(conditionalAuth, async ({ event, resolve }) => {
   const response = await resolve(event);
 

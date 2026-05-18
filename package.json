@@ -30,7 +30,7 @@
     "@sveltejs/adapter-auto": "^6.0.0",
     "@sveltejs/kit": "^2.60.1",
     "@sveltejs/vite-plugin-svelte": "^6.0.0",
-    "@tailwindcss/vite": "^4.0.0",
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
@@ -49,8 +49,8 @@
   },
   "dependencies": {
     "@auth/core": "^0.41.0",
-    "@zitadel/sveltekit-auth": "^0.1.0",
-    "openid-client": "^6.6.2"
+    "@zitadel/sveltekit-auth": "file:../sveltekit-auth",
+    "openid-client": "^6.6.3"
   },
   "overrides": {
     "cookie": "^1.0.2"
