@@ -1,7 +1,11 @@
+import type { Session } from '@auth/core/types';
+
 declare global {
   namespace App {
     // interface Error {}
-    // interface Locals {}
+    interface Locals {
+      auth: () => Promise<Session | null>;
+    }
     // interface PageData {}
     // interface PageState {}
     // interface Platform {}

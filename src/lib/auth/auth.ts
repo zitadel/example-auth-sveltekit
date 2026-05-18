@@ -1,4 +1,7 @@
-import { SvelteKitAuth } from '@zitadel/sveltekit-auth';
+import {
+  SvelteKitAuth,
+  type SvelteKitAuthConfig,
+} from '@zitadel/sveltekit-auth';
 import Zitadel from '@auth/core/providers/zitadel';
 import { randomUUID } from 'crypto';
 import * as oidc from 'openid-client';
@@ -198,7 +201,7 @@ declare module '@auth/core/jwt' {
  * - **jwt**: Manages token storage and refresh logic
  * - **session**: Shapes what data is available to your app
  */
-export const { handle } = SvelteKitAuth({
+export const authConfig: SvelteKitAuthConfig = {
   providers: [
     Zitadel({
       issuer: ZITADEL_DOMAIN,
@@ -394,4 +397,6 @@ export const { handle } = SvelteKitAuth({
       return session;
     },
   },
-});
+};
+
+export const { handle } = SvelteKitAuth(authConfig);

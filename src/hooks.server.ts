@@ -1,12 +1,22 @@
-import { handle as authHandle } from '$lib/auth/auth';
+import { handle as authHandle, authConfig } from '$lib/auth/auth';
+import { getSession } from '@zitadel/sveltekit-auth';
 import { sequence } from '@sveltejs/kit/hooks';
 import type { Handle } from '@sveltejs/kit';
 
-const conditionalAuth: Handle = ({ event, resolve }) => {
+const conditionalAuth: Handle = async ({ event, resolve }) => {
   if (event.url.pathname === '/api/auth/logout/callback') {
     return resolve(event);
   }
-  return authHandle({ event, resolve });
+  // Expose getSession via event.locals.auth so load functions can call it
+  event.locals.auth = () =>
+    getSession(
+      event as unknown as Parameters<typeof getSession>[0],
+      authConfig,
+    );
+  return authHandle({
+    event,
+    resolve,
+  } as unknown as Parameters<typeof authHandle>[0]);
 };
 
 // noinspection JSUnusedGlobalSymbols
