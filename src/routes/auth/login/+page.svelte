@@ -24,7 +24,7 @@
   $: provider = providers?.zitadel;
 
   onMount(async () => {
-    const providersResponse = await fetch('/auth/providers');
+    const providersResponse = await fetch('/api/auth/providers');
     providers = await providersResponse.json();
   });
 </script>
