@@ -399,4 +399,4 @@ export const authConfig: SvelteKitAuthConfig = {
   },
 };
 
-export const { handle } = SvelteKitAuth(authConfig);
+export const { handle, signInUrl, signOutUrl } = SvelteKitAuth(authConfig);
