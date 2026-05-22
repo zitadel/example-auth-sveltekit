@@ -18,14 +18,19 @@
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let providers: any = null;
+  let csrfToken = '';
 
   $: error = data.error;
   $: callbackUrl = data.callbackUrl;
   $: provider = providers?.zitadel;
 
   onMount(async () => {
-    const providersResponse = await fetch('/api/auth/providers');
-    providers = await providersResponse.json();
+    const [providersData, tokenData] = await Promise.all([
+      fetch('/api/auth/providers').then((res) => res.json()),
+      fetch('/api/auth/csrf').then((res) => res.json()),
+    ]);
+    providers = providersData;
+    csrfToken = tokenData?.csrfToken || '';
   });
 </script>
 
@@ -78,6 +83,7 @@
       {#if provider}
         <div class="mt-10">
           <form action={provider.signinUrl} method="POST" class="space-y-4">
+            <input type="hidden" name="csrfToken" value={csrfToken} />
             <input type="hidden" name="callbackUrl" value={callbackUrl} />
             <button
               type="submit"
