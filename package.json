@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@auth/core": "^0.41.0",
-    "@zitadel/sveltekit-auth": "file:../sveltekit-auth",
+    "@zitadel/sveltekit-auth": "^1.0.0",
     "openid-client": "^6.6.3"
   },
   "overrides": {
