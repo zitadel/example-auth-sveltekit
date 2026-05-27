@@ -10,6 +10,12 @@ export default defineConfig(({ mode }) => {
     plugins: [tailwindcss(), sveltekit()],
     server: {
       port,
+      headers: {
+        'X-Frame-Options': 'DENY',
+        'Content-Security-Policy':
+          "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline';",
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+      },
     },
     preview: {
       port,
