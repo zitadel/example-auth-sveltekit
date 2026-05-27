@@ -314,7 +314,6 @@ export const authConfig: SvelteKitAuthConfig = {
      * their destination. By default, Auth.js would redirect to the page they
      * came from, but this override ensures all users go to the profile page.
      *
-     * @param url - The URL the user is being redirected to
      * @param baseUrl - Your application's base URL (e.g., https://yourdomain.com)
      * @returns The URL to redirect the user to after successful login
      */
