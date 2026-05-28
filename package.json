@@ -48,7 +48,7 @@
     "vite": "^7.3.2"
   },
   "dependencies": {
-    "@auth/core": "^0.41.0",
+    "@auth/core": "^0.40.0",
     "@zitadel/sveltekit-auth": "^1.0.0",
     "openid-client": "^6.6.3"
   },
