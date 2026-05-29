@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { RequestHandler } from './$types';
 
 // noinspection JSUnusedGlobalSymbols
 /**
@@ -15,22 +15,22 @@ import type { PageServerLoad } from './$types';
  * @returns A redirect response that either redirects the user to a success
  * or error page. Upon success, it includes headers to delete session cookies.
  */
-export const load: PageServerLoad = async (event) => {
+export const GET: RequestHandler = async (event) => {
   const state = event.url.searchParams.get('state');
   const logoutStateCookie = event.cookies.get('logout_state');
 
   if (state && logoutStateCookie && state === logoutStateCookie) {
-    const successUrl = new URL('/auth/logout/success', event.url);
+    const successUrl = new URL('/logout/success', event.url);
     event.setHeaders({ 'Clear-Site-Data': '"cookies"' });
     for (const name of event.cookies.getAll().map((c) => c.name)) {
       if (name.includes('authjs.')) {
         event.cookies.delete(name, { path: '/' });
       }
     }
-    event.cookies.delete('logout_state', { path: '/auth/logout/callback' });
+    event.cookies.delete('logout_state', { path: '/api/auth/logout/callback' });
     throw redirect(302, successUrl.toString());
   } else {
-    const errorUrl = new URL('/auth/logout/error', event.url);
+    const errorUrl = new URL('/logout/error', event.url);
     errorUrl.searchParams.set('reason', 'Invalid or missing state parameter.');
     throw redirect(302, errorUrl.toString());
   }

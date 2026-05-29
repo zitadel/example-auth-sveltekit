@@ -1,6 +1,10 @@
 module.exports = {
   ignore: ['commitlint.config.js'],
-  ignoreDependencies: ['@commitlint/config-conventional'],
+  ignoreDependencies: [
+    '@commitlint/config-conventional',
+    '@zitadel/sveltekit-auth',
+  ],
+  entry: ['src/hooks.server.ts', 'src/routes/**/*', 'src/lib/**/*'],
   paths: {
     '$env/static/private': ['.svelte-kit/ambient.d.ts'],
   },

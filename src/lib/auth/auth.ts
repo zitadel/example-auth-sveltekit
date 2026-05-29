@@ -1,5 +1,8 @@
-import { SvelteKitAuth } from '@auth/sveltekit';
-import Zitadel from '@auth/sveltekit/providers/zitadel';
+import {
+  SvelteKitAuth,
+  type SvelteKitAuthConfig,
+} from '@zitadel/sveltekit-auth';
+import Zitadel from '@auth/core/providers/zitadel';
 import { randomUUID } from 'crypto';
 import * as oidc from 'openid-client';
 import type { JWT } from '@auth/core/jwt';
@@ -198,7 +201,7 @@ declare module '@auth/core/jwt' {
  * - **jwt**: Manages token storage and refresh logic
  * - **session**: Shapes what data is available to your app
  */
-export const { handle } = SvelteKitAuth({
+export const authConfig: SvelteKitAuthConfig = {
   providers: [
     Zitadel({
       issuer: ZITADEL_DOMAIN,
@@ -311,7 +314,6 @@ export const { handle } = SvelteKitAuth({
      * their destination. By default, Auth.js would redirect to the page they
      * came from, but this override ensures all users go to the profile page.
      *
-     * @param url - The URL the user is being redirected to
      * @param baseUrl - Your application's base URL (e.g., https://yourdomain.com)
      * @returns The URL to redirect the user to after successful login
      */
@@ -394,4 +396,6 @@ export const { handle } = SvelteKitAuth({
       return session;
     },
   },
-});
+};
+
+export const { handle, signInUrl, signOutUrl } = SvelteKitAuth(authConfig);

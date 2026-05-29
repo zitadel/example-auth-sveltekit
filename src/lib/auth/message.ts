@@ -13,7 +13,7 @@ type ErrorCategory = 'signin-error' | 'auth-error';
  *
  * @param errorInput The error input which can be:
  * - A specific error code string (e.g., 'OAuthCallback', 'AccessDenied')
- * - A route query value from URL searchParams (string, array, null, or undefined)
+ * - A route query value from route.query.error (string, array, null, or undefined)
  * @param category The category of the error ('signin-error' for flow-specific
  * messages, 'auth-error' for general error page messages).
  * @returns An object containing a 'heading' and a 'message' for display.

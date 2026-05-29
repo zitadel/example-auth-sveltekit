@@ -22,7 +22,7 @@ Before you begin, ensure you have the following:
 
 #### System Requirements
 
-- Node.js (v20 or later is recommended)
+- Node.js (v22 or later is recommended)
 - npm, yarn, or pnpm package manager
 
 #### Account Setup
@@ -31,8 +31,8 @@ You'll need a ZITADEL account and application configured. Follow the [ZITADEL do
 
 > **Important:** Configure the following URLs in your ZITADEL application settings:
 >
-> - **Redirect URIs:** Add `http://localhost:3000/auth/callback/zitadel` (for development)
-> - **Post Logout Redirect URIs:** Add `http://localhost:3000/auth/logout/callback` (for development)
+> - **Redirect URIs:** Add `http://localhost:3000/api/auth/callback/zitadel` (for development)
+> - **Post Logout Redirect URIs:** Add `http://localhost:3000/api/auth/logout/callback` (for development)
 >
 > These URLs must exactly match what your SvelteKit application uses. For production, add your production URLs.
 
@@ -74,11 +74,11 @@ ZITADEL_CLIENT_SECRET="your-randomly-generated-client-secret"
 
 # OAuth callback URL where ZITADEL redirects after user authentication. This
 # MUST exactly match a Redirect URI configured in your ZITADEL application.
-ZITADEL_CALLBACK_URL="http://localhost:3000/auth/callback/zitadel"
+ZITADEL_CALLBACK_URL="http://localhost:3000/api/auth/callback/zitadel"
 
 # URL where users are redirected after logout. This should match a Post Logout
 # Redirect URI configured in your ZITADEL application settings.
-ZITADEL_POST_LOGOUT_URL="http://localhost:3000/auth/logout/callback"
+ZITADEL_POST_LOGOUT_URL="http://localhost:3000/api/auth/logout/callback"
 
 # Optional. URL where users are redirected after successful login.
 # Defaults to "/profile" if not specified.

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { signIn } from '@auth/sveltekit/client';
+  import { signIn } from '@zitadel/sveltekit-auth/client';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
 </script>
@@ -187,7 +187,7 @@
               <a
                 href="https://zitadel.com/docs/guides/integrate/oauth-recommended-flows"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
                 class="text-blue-600 hover:text-blue-700"
               >
                 Learn more about PKCE
