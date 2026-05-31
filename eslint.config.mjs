@@ -1,33 +1,46 @@
-import prettier from 'eslint-config-prettier';
-import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
-import svelte from 'eslint-plugin-svelte';
-import globals from 'globals';
-import { fileURLToPath } from 'node:url';
 import ts from 'typescript-eslint';
+import svelte from 'eslint-plugin-svelte';
+import prettier from 'eslint-config-prettier';
+import globals from 'globals';
+import { includeIgnoreFile } from '@eslint/compat';
+import { fileURLToPath } from 'node:url';
 import svelteConfig from './svelte.config.js';
 
 const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
 
 export default ts.config(
   includeIgnoreFile(gitignorePath),
+  {
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      'build/**',
+      'coverage/**',
+      '.svelte-kit/**',
+    ],
+  },
   js.configs.recommended,
   ...ts.configs.recommended,
-  ...svelte.configs.recommended,
-  prettier,
-  ...svelte.configs.prettier,
   {
+    files: ['**/*.{ts,tsx}'],
     languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
-    },
-    rules: {
-      // typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
-      // see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
-      'no-undef': 'off',
-      // Disabled: rule was added in eslint-plugin-svelte 3.x and requires code changes
-      'svelte/no-navigation-without-resolve': 'off',
+      parser: ts.parser,
+      parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+      globals: { ...globals.browser, ...globals.node, ...globals.es2021 },
     },
   },
+  {
+    files: ['**/*.{js,mjs}'],
+    languageOptions: {
+      globals: { ...globals.node, ...globals.es2021 },
+    },
+  },
+  {
+    files: ['**/*.{test,spec}.{ts,tsx,js,mjs}', 'test/**/*.{ts,tsx,js,mjs}'],
+    languageOptions: { globals: { ...globals.jest, ...globals.node } },
+  },
+  ...svelte.configs.recommended,
   {
     files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
     languageOptions: {
@@ -39,4 +52,16 @@ export default ts.config(
       },
     },
   },
+  {
+    rules: {
+      // typescript-eslint recommends not using no-undef on TS projects.
+      // https://typescript-eslint.io/troubleshooting/faqs/eslint/
+      'no-undef': 'off',
+      // Pre-existing: rule was added in eslint-plugin-svelte 3.x and
+      // requires code changes to satisfy.
+      'svelte/no-navigation-without-resolve': 'off',
+    },
+  },
+  ...svelte.configs.prettier,
+  prettier,
 );
